@@ -16,7 +16,7 @@ public class UserSkill {
     private Long id;
 
     @ManyToOne
-    private Usuario usuario;
+    private User usuario;
 
     @ManyToOne
     private Skill skill;
@@ -36,11 +36,11 @@ public class UserSkill {
         this.id = id;
     }
 
-    public Usuario getUsuario() {
+    public User getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(User usuario) {
         this.usuario = usuario;
     }
 

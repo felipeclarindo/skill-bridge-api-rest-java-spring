@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -13,6 +14,7 @@ import reactor.core.publisher.Mono;
 public class AIService {
 
     private final WebClient wc;
+
     @Value("${openai.api.key:}")
     private String key;
 
@@ -20,6 +22,7 @@ public class AIService {
         this.wc = wc;
     }
 
+    @Cacheable(value = "aiResponses", key = "#prompt")
     public Mono<String> generate(String prompt) {
         if (key == null || key.isBlank()) {
             return Mono.just("OpenAI key not configured");

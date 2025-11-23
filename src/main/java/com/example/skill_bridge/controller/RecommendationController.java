@@ -18,7 +18,7 @@ import com.example.skill_bridge.service.RecommendationService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/recommendations")
+@RequestMapping("/api/v1/recommendations")
 public class RecommendationController {
 
     private final RecommendationService service;

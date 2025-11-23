@@ -21,7 +21,8 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                 // Libera autenticação
-                .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/api").permitAll()
+                .requestMatchers("/api/v1/auth/**").permitAll()
                 // Libera swagger COMPLETO
                 .requestMatchers(
                         "/swagger-ui/**",
@@ -31,7 +32,8 @@ public class SecurityConfig {
                         "/webjars/**"
                 ).permitAll()
                 // Libera health
-                .requestMatchers("/actuator/health").permitAll()
+                .requestMatchers("/api/v1/health").permitAll()
+                .requestMatchers("/actuator/**").permitAll()
                 // Libera OPTIONS (necessário para o Swagger)
                 .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
                 // Qualquer outra requisição -> precisa autenticar

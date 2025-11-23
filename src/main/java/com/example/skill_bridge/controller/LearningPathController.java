@@ -18,7 +18,7 @@ import com.example.skill_bridge.service.LearningPathService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/learning-paths")
+@RequestMapping("/api/v1/learning-paths")
 public class LearningPathController {
 
     private final LearningPathService service;
